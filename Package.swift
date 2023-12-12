@@ -5,17 +5,24 @@ import PackageDescription
 
 let package = Package(
     name: "GordonKirschUtils",
+    platforms: [.iOS(.v16)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GordonKirschUtils",
             targets: ["GordonKirschUtils"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/auth0/JWTDecode.swift", .upToNextMajor(from: "3.1.0")),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GordonKirschUtils"),
+            name: "GordonKirschUtils",
+            dependencies: [
+                .product(name: "JWTDecode", package: "JWTDecode.swift")
+            ]),
         .testTarget(
             name: "GordonKirschUtilsTests",
             dependencies: ["GordonKirschUtils"]),
