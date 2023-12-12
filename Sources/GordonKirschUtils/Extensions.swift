@@ -8,12 +8,12 @@
 import Foundation
 import JWTDecode
 
-extension Date {
-    public func timestamp() -> Int {
+public extension Date {
+    func timestamp() -> Int {
         return Int(self.timeIntervalSince1970)
     }
     
-    public func toISO8601(withTime: Bool = true) -> String {
+    func toISO8601(withTime: Bool = true) -> String {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale.current
@@ -23,24 +23,24 @@ extension Date {
     }
 }
 
-extension HTTPURLResponse {
-    public func isSuccessful() -> Bool {
+public extension HTTPURLResponse {
+    func isSuccessful() -> Bool {
         return statusCode >= 200 && statusCode <= 299
     }
 }
 
-extension JWT {
-    public var uuid: UUID {
+public extension JWT {
+    var uuid: UUID {
         return UUID(uuidString: self["uuid"].string!)!
     }
     
-    public var email: String {
+    var email: String {
         return self["username"].string!
     }
 }
 
-extension URL {
-    public func extractParams() -> [(name: String, value: String)] {
+public extension URL {
+    func extractParams() -> [(name: String, value: String)] {
       let components =
         self.absoluteString
         .split(separator: "&")
