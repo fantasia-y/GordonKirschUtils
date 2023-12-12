@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-class QRCodeUtils {
-    static func generate(from string: String) -> UIImage {
+public class QRCodeUtils {
+    public static func generate(from string: String) -> UIImage {
         let context = CIContext()
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
