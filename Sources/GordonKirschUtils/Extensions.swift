@@ -9,11 +9,11 @@ import Foundation
 import JWTDecode
 
 extension Date {
-    func timestamp() -> Int {
+    public func timestamp() -> Int {
         return Int(self.timeIntervalSince1970)
     }
     
-    func toISO8601(withTime: Bool = true) -> String {
+    public func toISO8601(withTime: Bool = true) -> String {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale.current
@@ -24,23 +24,23 @@ extension Date {
 }
 
 extension HTTPURLResponse {
-    func isSuccessful() -> Bool {
+    public func isSuccessful() -> Bool {
         return statusCode >= 200 && statusCode <= 299
     }
 }
 
 extension JWT {
-    var uuid: UUID {
+    public var uuid: UUID {
         return UUID(uuidString: self["uuid"].string!)!
     }
     
-    var email: String {
+    public var email: String {
         return self["username"].string!
     }
 }
 
 extension URL {
-    func extractParams() -> [(name: String, value: String)] {
+    public func extractParams() -> [(name: String, value: String)] {
       let components =
         self.absoluteString
         .split(separator: "&")
